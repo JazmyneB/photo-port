@@ -5,7 +5,7 @@ import { render, cleanup } from '@testing-library/react';
 //access to custom matchers that are used to test DOM elements
 import '@testing-library/jest-dom/extend-expect';
 //importing component
-import About from '../../About';
+import About from '..';
 
 //After each tests, no left over memory data
 afterEach(cleanup);
