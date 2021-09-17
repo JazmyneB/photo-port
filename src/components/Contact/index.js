@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { validateEmail } from '../../utils/helpers';
 
 
 
@@ -7,9 +8,32 @@ function ContactForm(){
 
     const { name, email, message } = formState;
 
+    const [errorMessage, setErrorMessage] = useState('');
+
     function handleChange(e) {
+
+        if (e.target.name === 'email'){
+            const isValid = validateEmail(e.target.value);
+            console.log(isValid);
+
+            if(!isValid){
+                setErrorMessage('Your email is invalid.');
+            } else {
+                if(!e.target.value.length){
+                    setErrorMessage(`${e.target.name} is required`);
+                } else{
+                setErrorMessage('');
+                }
+            }
+        }
+
+
         //Spread operator to retain the key value pairs in the object`...`
-        setFormState({...formState, [e.target.name]: e.target.value })
+        if (!errorMessage){
+            setFormState({...formState, [e.target.name]: e.target.value })
+        }
+
+        console.log('errorMessage', errorMessage)
     }
     //console.log(formState);
 
