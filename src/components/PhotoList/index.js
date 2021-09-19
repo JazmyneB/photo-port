@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-//import photo from '../../assets';
+//import photo from '../../assets/small/';
 
 const PhotoList = ({ category }) => {
 
